@@ -1,0 +1,13 @@
+choices = ("Tepig", "Oshawott", "Snivy")  
+users_choice = input("What Pokemon do you want?: ")
+if users_choice == 'Tepig':
+    print("Bianca chose Snivy")
+    print("Cheren chose Oshawott")
+elif users_choice == 'Oshawott':
+    print("Bianca chose Tepig")
+    print("Cheren chose Snivy")
+elif users_choice == 'Snivy':
+    print("Bianca chose Oshawott")
+    print("Cheren chose Tepig")
+else:
+    print("Invalid choice. Please choose from Tepig, Oshawott, or Snivy.")
