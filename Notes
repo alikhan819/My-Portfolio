@@ -1,0 +1,25 @@
+from tkinter import *
+
+def note():
+    def submit():
+        input = text.get("1.0",END)
+        print(input)
+
+    new_window = Tk()
+    text = Text(new_window,
+                bg="light green",
+                font=("Ink Free",20),
+                height=8,
+                width=20,
+                padx=20,
+                pady=20)
+    button = Button(new_window,text='submit',command=submit)
+    button.pack()
+    text.pack()
+
+old_window = Tk()
+
+button = Button(old_window,text='New Note',command=note)
+
+button.pack()
+old_window.mainloop()
