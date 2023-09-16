@@ -1,10 +1,12 @@
 from tkinter import *
+import os
 
 def note():
     def submit():
         input = text.get("1.0",END)
-        print(input)
-
+        with open("note.txt", "w") as f:
+            f.write(input)
+        print("Note saved successfully!")
     new_window = Tk()
     text = Text(new_window,
                 bg="light green",
@@ -18,8 +20,6 @@ def note():
     text.pack()
 
 old_window = Tk()
-
 button = Button(old_window,text='New Note',command=note)
-
 button.pack()
 old_window.mainloop()
