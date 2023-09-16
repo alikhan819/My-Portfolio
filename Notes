@@ -9,7 +9,7 @@ def note():
         print("Note saved successfully!")
     new_window = Tk()
     text = Text(new_window,
-                bg="light green",
+                bg="light yellow",
                 font=("Ink Free",20),
                 height=8,
                 width=20,
