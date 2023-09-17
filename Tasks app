@@ -1,0 +1,32 @@
+import tkinter as tk
+
+def create_checkbox():
+    text = entry.get()
+    if text:
+        checkbox = tk.Checkbutton(frame, text=text)
+        checkbox.pack()
+        checkboxes.append(checkbox)
+
+def delete_all_checkboxes():
+    for checkbox in checkboxes:
+        checkbox.pack_forget()
+    checkboxes.clear()
+
+window = tk.Tk()
+window.title("Tasks")
+
+entry = tk.Entry(window, width=40)
+entry.pack()
+
+create_button = tk.Button(window, text="New Task", command=create_checkbox)
+create_button.pack()
+
+delete_button = tk.Button(window, text="Delete All", command=delete_all_checkboxes)
+delete_button.pack()
+
+frame = tk.Frame(window)
+frame.pack()
+
+checkboxes = []
+
+window.mainloop()
