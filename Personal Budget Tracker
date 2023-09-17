@@ -1,0 +1,97 @@
+import tkinter as tk
+
+class User:
+    def __init__(self, name):
+        self.name = name
+        self.income_sources = []
+        self.expenses = []
+
+    def add_income_source(self, source_name, amount):
+        income_source = IncomeSource(source_name, amount)
+        self.income_sources.append(income_source)
+
+    def add_expense(self, category, amount):
+        expense = Expense(category, amount)
+        self.expenses.append(expense)
+
+    def get_total_income(self):
+        return sum(source.amount for source in self.income_sources)
+
+    def get_total_expenses(self):
+        return sum(expense.amount for expense in self.expenses)
+
+    def get_balance(self):
+        return self.get_total_income() - self.get_total_expenses()
+
+class IncomeSource:
+    def __init__(self, name, amount):
+        self.name = name
+        self.amount = amount
+
+class Expense:
+    def __init__(self, category, amount):
+        self.category = category
+        self.amount = amount
+
+def add_income():
+    source_name = income_source_entry.get()
+    amount = float(income_amount_entry.get())
+    user.add_income_source(source_name, amount)
+    update_display()
+
+def add_expense():
+    category = expense_category_entry.get()
+    amount = float(expense_amount_entry.get())
+    user.add_expense(category, amount)
+    update_display()
+
+def update_display():
+    income_label.config(text=f"Total Income: ${user.get_total_income():.2f}")
+    expenses_label.config(text=f"Total Expenses: ${user.get_total_expenses():.2f}")
+    balance_label.config(text=f"Balance: ${user.get_balance():.2f}")
+
+# Create a user
+user = User("Ali Sher")
+
+# Create the main application window
+root = tk.Tk()
+root.title("Income and Expense Tracker")
+
+# Create and arrange widgets
+income_label = tk.Label(root, text="Total Income: $0.00")
+expenses_label = tk.Label(root, text="Total Expenses: $0.00")
+balance_label = tk.Label(root, text="Balance: $0.00")
+
+income_source_label = tk.Label(root, text="Income Source:")
+income_amount_label = tk.Label(root, text="Amount:")
+expense_category_label = tk.Label(root, text="Expense Category:")
+expense_amount_label = tk.Label(root, text="Amount:")
+
+income_source_entry = tk.Entry(root)
+income_amount_entry = tk.Entry(root)
+expense_category_entry = tk.Entry(root)
+expense_amount_entry = tk.Entry(root)
+
+add_income_button = tk.Button(root, text="Add Income", command=add_income)
+add_expense_button = tk.Button(root, text="Add Expense", command=add_expense)
+
+# Arrange widgets using grid layout
+income_label.grid(row=0, column=0, columnspan=2)
+expenses_label.grid(row=1, column=0, columnspan=2)
+balance_label.grid(row=2, column=0, columnspan=2)
+
+income_source_label.grid(row=3, column=0, sticky=tk.E)
+income_source_entry.grid(row=3, column=1)
+income_amount_label.grid(row=4, column=0, sticky=tk.E)
+income_amount_entry.grid(row=4, column=1)
+add_income_button.grid(row=5, column=0, columnspan=2)
+
+expense_category_label.grid(row=6, column=0, sticky=tk.E)
+expense_category_entry.grid(row=6, column=1)
+expense_amount_label.grid(row=7, column=0, sticky=tk.E)
+expense_amount_entry.grid(row=7, column=1)
+add_expense_button.grid(row=8, column=0, columnspan=2)
+
+update_display()
+
+root.mainloop()
