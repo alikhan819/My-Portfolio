@@ -1,0 +1,72 @@
+# Tic Tac Toe Program
+import tkinter as tk
+from tkinter import messagebox
+
+# Initialize variables
+current_player = "X"
+board = [" " for _ in range(9)]
+
+# Function to check for a win
+def check_win():
+    global board
+    win_conditions = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]
+
+    for condition in win_conditions:
+        if board[condition[0]] == board[condition[1]] == board[condition[2]] != " ":
+            return True
+    return False
+
+# Function to check for a draw
+def check_draw():
+    global board
+    return " " not in board
+
+# Function to handle a button click
+def button_click(index):
+    global current_player, board
+
+    if board[index] == " ":
+        board[index] = current_player
+        buttons[index].config(text=current_player)
+
+        if check_win():
+            messagebox.showinfo("Tic-Tac-Toe", f"Player {current_player} wins!")
+            reset_board()
+        elif check_draw():
+            messagebox.showinfo("Tic-Tac-Toe", "It's a draw!")
+            reset_board()
+        else:
+            current_player = "O" if current_player == "X" else "X"
+            label.config(text=f"Current Player: {current_player}")
+
+# Function to reset the game
+def reset_board():
+    global current_player, board
+    current_player = "X"
+    board = [" " for _ in range(9)]
+    for button in buttons:
+        button.config(text=" ")
+    label.config(text="Current Player: X")
+
+# Create the main window
+root = tk.Tk()
+root.title("Tic-Tac-Toe")
+
+# Create buttons
+buttons = []
+for i in range(9):
+    row = i // 3
+    col = i % 3
+    button = tk.Button(root, text=" ", width=10, height=3, command=lambda i=i: button_click(i))
+    button.grid(row=row, column=col)
+    buttons.append(button)
+
+# Create a label to display the current player
+label = tk.Label(root, text="Current Player: X")
+label.grid(row=3, column=0, columnspan=3)
+
+# Create a reset button
+reset_button = tk.Button(root, text="Reset", width=10, height=2, command=reset_board)
+reset_button.grid(row=4, column=0, columnspan=3)
+
+root.mainloop()
