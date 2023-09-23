@@ -1,0 +1,15 @@
+my_grade = int(input("How much did you score in your test: "))
+if (my_grade <= 40):
+    print("You got a F ")
+elif (my_grade >= 50) or (my_grade >=59):
+    print("You got an D ")
+elif (my_grade >= 60) or (my_grade <= 59):
+    print("You got a C ")
+elif (my_grade >= 70) or (my_grade <= 79):
+    print("You got a B ")
+elif (my_grade >= 80) or (my_grade <= 89):
+    print("You got a A ")
+elif (my_grade >= 90) or (my_grade <= 100):
+    print("You got a A+ ")
+else:
+    print("Invalid Input")
