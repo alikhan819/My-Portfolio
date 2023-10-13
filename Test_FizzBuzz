@@ -1,0 +1,7 @@
+from hello import main
+try:
+    main()
+except ValueError:
+    print("Invalid Input")
+except TypeError:
+    print("Invalid Input")
