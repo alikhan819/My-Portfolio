@@ -1,8 +1,5 @@
-# First we import the "Choice" function from the random module and the 
-# reason why i didn't import the whole random library because it can 
-# make a tiny bit of performance downgrade.
-# You can import the whole library if you want.
-from random import choice
+# First we import the "random" module
+import random
 
 # Now we create a function name head_or_tails (I couldn't think of any professional name)
 
