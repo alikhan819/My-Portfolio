@@ -8,7 +8,7 @@
 		</h1>
 		<hr>
 		<h3>
-			Welcome to my portfolio here I would be posting most of my projects as I am learning along
+			Hi my name is Ali Sher a 14 year old Python Developer under training
 		</h3>
 		<ul>
 			<b>Contact me on:</b>
